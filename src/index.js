@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 // use this to fetch data from youtube
 import YTSearch from 'youtube-api-search';
 import SearchBar from './components/search_bar.js';
+import VideoList from './components/video_list.js';
 const API_KEY = 'AIzaSyB_zm0K9pV_-G0SL2MO6EMWwrmf2pEs-TM';
 
 // create a new component. This component should produce some HTML
@@ -26,6 +27,7 @@ class App extends Component {
     return(
       <div>
         <SearchBar />
+        <VideoList videos={this.state.videos} />
       </div>
     );
   }
