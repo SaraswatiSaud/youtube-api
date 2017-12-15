@@ -2,6 +2,11 @@ import React from 'react';
 import LikeButton from './like_button';
 import CommentVideo from './comment_video';
 
+const divStyle = {
+  fontWeight: 'bold',
+  fontSize: '20px'
+}
+
 const VideoDetail = ({video}) => {
   if (!video) {
     return <div>Video Loading...</div>;
@@ -15,7 +20,7 @@ const VideoDetail = ({video}) => {
         <iframe className='embed-responsive-item' src={url}></iframe>
       </div>
       <div className='details'>
-        <div>{video.snippet.title}</div>
+        <div style={divStyle}>{video.snippet.title}</div>
         <div>{video.snippet.description}</div>
       </div>
       <div>

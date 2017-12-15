@@ -1,7 +1,7 @@
 import React from 'react';
 
 const VideoListItem = ({video, onVideoSelect}) => {
-  // Video list with the search term = surfboards
+  // Video list with the search term = book
   const imageURL = video.snippet.thumbnails.default.url;
 
   // const video = props.video; // variable declaration to pull videos from props
