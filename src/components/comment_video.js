@@ -33,22 +33,22 @@ class CommentVideo extends Component {
       <div>
         <hr />
         <h3>Add a comment</h3>
+        <textarea
+          cols='75' value={this.state.value}
+          onChange={this.handleChange}
+        ></textarea><br />
+        <button
+          onClick={() => this.handleSubmit()}
+          className='btn btn-primary'
+        >
+        Comment</button>
 
-          <textarea
-            cols='75' value={this.state.value}
-            onChange={this.handleChange}
-          ></textarea><br />
-          <button
-            onClick={() => this.handleSubmit()}
-          >
-          Comment</button>
-
-          <br />
-          <hr />
-          <h5>Top Comments<i className="pull-right">Total Comments ({this.state.count})</i></h5>
-          <CommentList
-            listcomments={this.props.comment}
-          />
+        <br />
+        <hr />
+        <h5>Top Comments<i className="pull-right">Total Comments ({this.state.count})</i></h5>
+        <CommentList
+          listcomments={this.props.comment}
+        />
       </div>
     )
   }
