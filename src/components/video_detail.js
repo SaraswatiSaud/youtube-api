@@ -1,6 +1,6 @@
 import React from 'react';
 import LikeButton from './like_button';
-
+import CommentVideo from './comment_video';
 
 const VideoDetail = ({video}) => {
   if (!video) {
@@ -14,13 +14,14 @@ const VideoDetail = ({video}) => {
       <div className='embed-responsive embed-responsive-16by9'>
         <iframe className='embed-responsive-item' src={url}></iframe>
       </div>
-      <div class='details'>
+      <div className='details'>
         <div>{video.snippet.title}</div>
         <div>{video.snippet.description}</div>
       </div>
       <div>
         <br />
         <LikeButton />
+        <CommentVideo />
       </div>
     </div>
   )
