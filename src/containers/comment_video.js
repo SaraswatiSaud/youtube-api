@@ -7,7 +7,6 @@ class CommentVideo extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: '',
       count: 0,
     };
   }
@@ -42,7 +41,6 @@ class CommentVideo extends Component {
           className='btn btn-primary'
         >
         Comment</button>
-
         <br />
         <hr />
         <h5>Top Comments<i className="pull-right">Total Comments ({this.state.count})</i></h5>
