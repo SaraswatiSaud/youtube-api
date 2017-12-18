@@ -1,6 +1,6 @@
 export default function (state = [], action = {}) {
   switch (action.type) {
-    case 'ADD_COMMENT':
+    case 'REPLY_COMMENT':
       // let id = action.id
       return [
         ...state,

@@ -1,48 +1,55 @@
+import _ from 'lodash';
 import React, { Component } from 'react';
-// use this to fetch data from youtube
-import YTSearch from 'youtube-api-search';
-import SearchBar from '../containers/search_bar';
-import VideoList from '../containers/video_list';
-import VideoDetail from '../containers/video_detail';
-
+import SearchBar from '../containers/searchBar';
+import VideoDetail from '../containers/videoDetail';
+import VideoList from '../containers/videoList';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import{ videoSearch} from '../actions/videoSearchAction';
 import '../style/style.css';
-const API_KEY = 'AIzaSyB_zm0K9pV_-G0SL2MO6EMWwrmf2pEs-TM';
 
 class App extends Component {
-  constructor(props) {
+  constructor(props){
     super(props);
-
     this.state = {
-      videos: [],
       selectedVideo: null
     }
-    this.videoSearch('book')
+    this.props.videoSearch('book');
   }
 
-  videoSearch(term) {
-    YTSearch({key: API_KEY, term: term}, (videos) => {
-      // displays the videos
-      this.setState({
-        videos: videos,
-        selectedVideo: videos[0]
-      });
-    });
+  searchVideo = (term) => {
+    this.props.videoSearch(term);
   }
 
-  render() {
+  componentWillReceiveProps = (nextProps) => {
+    this.setState({selectedVideo: nextProps.selectedVideo});
+  }
+
+  render(){
+   const searchVideo = _.debounce((term) => {this.searchVideo(term) }, 300)
     return(
       <div>
-        <SearchBar onSearchTermChange={term => this.videoSearch(term)} />
+        <SearchBar onSelectTermChange= {searchVideo}/>
         <div className='row'>
-          <VideoDetail video={this.state.selectedVideo} />
+          <VideoDetail video={this.state.selectedVideo}/>
           <VideoList
-            onVideoSelect={selectedVideo => this.setState({selectedVideo})}
-            videos={this.state.videos} />
+          onVideoSelect={selectedVideo => this.setState({selectedVideo}) }
+          videos={this.props.videos} />
         </div>
       </div>
     );
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    videos: state.videos,
+    selectedVideo: state.videos[0]
+   };
+}
 
-export default App;
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({videoSearch}, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
