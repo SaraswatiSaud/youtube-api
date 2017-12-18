@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import VideoListItem from './video_list_item';
+import VideoListItem from './videoListItem';
 
 class VideoList extends Component {
   constructor(props) {
@@ -7,13 +7,12 @@ class VideoList extends Component {
   }
 
   render() {
-    const videoItems = this.props.videos.map((video) => {
+    let videoItems = this.props.videos.map((video) => {
       return (
         <VideoListItem
           onVideoSelect={this.props.onVideoSelect}
           key={video.etag}
-          video={video}
-        />
+          video={video}/>
       );
     });
     return(

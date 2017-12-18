@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {updateComment} from '../actions/comment.action';
-import CommentList from './comment_list';
+import {updateComment} from '../actions/commentAction';
+import CommentList from './commentList';
 
 class CommentVideo extends Component {
   constructor(props) {
@@ -18,11 +18,8 @@ class CommentVideo extends Component {
   }
 
   handleSubmit = (event) => {
-    if(!this.props.comment) {
-      return false;
-    }
     this.setState({
-      count: this.state.count + 1
+      count: this.state.count + 1,
     })
     this.props.dispatch(updateComment(this.state.comment))
   }
@@ -32,21 +29,16 @@ class CommentVideo extends Component {
       <div>
         <hr />
         <h3>Add a comment</h3>
-        <textarea
-          cols='75' value={this.state.value}
-          onChange={this.handleChange}
-        ></textarea><br />
-        <button
-          onClick={() => this.handleSubmit()}
-          className='btn btn-primary'
-        >
-        Comment</button>
+        <textarea cols='75' value={this.state.value} onChange={this.handleChange}></textarea>
+        <br />
+        <button onClick={() => this.handleSubmit()}
+                className='btn btn-secondary'>Comment</button>
         <br />
         <hr />
-        <h5>Top Comments<i className="pull-right">Total Comments ({this.state.count})</i></h5>
-        <CommentList
-          listcomments={this.props.comment}
-        />
+        <h5>Top Comments<i className="pull-right">
+            Total Comments ({this.state.count})</i>
+        </h5>
+        <CommentList listcomments={this.props.comment} />
       </div>
     )
   }

@@ -1,4 +1,4 @@
-export default function(state=0, action) {
+export default function(state=null, action) {
   switch (action.type) {
     case 'LIKE VIDEO':
       return state + 1

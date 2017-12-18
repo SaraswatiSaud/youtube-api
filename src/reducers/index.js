@@ -1,14 +1,16 @@
 import {combineReducers} from 'redux';
-import SearchBarReducer from './search_bar.reducer';
-import LikeReducer from './like.reducer';
-import DislikeReducer from './dislike.reducer';
-import CommentReducer from './comment.reducer';
+import videos from './searchBarReducer';
+import LikeReducer from './likeReducer';
+import DislikeReducer from './dislikeReducer';
+import CommentReducer from './commentReducer';
+import ReplyReducer from './replyReducer';
 
 const allReducers = combineReducers({
-  video: SearchBarReducer,
+  videos: videos,
   likeValue: LikeReducer,
   dislikeValue: DislikeReducer,
-  comment: CommentReducer
+  comment: CommentReducer,
+  reply: ReplyReducer
 });
 
 export default allReducers;

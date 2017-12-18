@@ -4,7 +4,6 @@ const VideoListItem = ({video, onVideoSelect}) => {
   // Video list with the search term = book
   const imageURL = video.snippet.thumbnails.default.url;
 
-  // const video = props.video; // variable declaration to pull videos from props
   return (
     <li onClick={() => onVideoSelect(video)} className='list-group-item'>
       <div className='video-list media'>

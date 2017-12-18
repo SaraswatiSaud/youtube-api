@@ -1,6 +1,6 @@
 import React from 'react';
-import LikeButton from './like_button';
-import CommentVideo from './comment_video';
+import LikeButton from './likeButton';
+import CommentVideo from './commentVideo';
 
 const divStyle = {
   fontWeight: 'bold',
@@ -24,7 +24,6 @@ const VideoDetail = ({video}) => {
         <div>{video.snippet.description}</div>
       </div>
       <div>
-        <br />
         <LikeButton />
         <CommentVideo />
       </div>

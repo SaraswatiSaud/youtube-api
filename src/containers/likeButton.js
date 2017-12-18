@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {like} from '../actions/like';
-import {dislike} from '../actions/dislike';
+import {like} from '../actions/likeAction';
+import {dislike} from '../actions/dislikeAction';
 
 const buttonStyle = {
   margin: '5px',
@@ -12,8 +12,7 @@ const buttonStyle = {
 class LikeButton extends Component {
   render() {
     return(
-      <div className='offset-md-9'>
-        {this.props.likeValue}
+      <div className='offset-md-9'>{this.props.likeValue}
         <button
           onClick={() => this.props.like()}
           className="fa fa-thumbs-up"
@@ -23,8 +22,7 @@ class LikeButton extends Component {
           onClick={() => this.props.dislike()}
           className="fa fa-thumbs-down"
           style={buttonStyle}
-        ></button>
-        {this.props.dislikeValue}
+        ></button>{this.props.dislikeValue}
       </div>
     )
   }
