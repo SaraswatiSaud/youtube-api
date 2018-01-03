@@ -26,7 +26,7 @@ class App extends Component {
   }
 
   render(){
-   const searchVideo = _.debounce((term) => {this.searchVideo(term) }, 300)
+   const searchVideo = _.debounce((term) => {this.searchVideo(term) }, 3000)
     return(
       <div>
         <SearchBar onSelectTermChange= {searchVideo}/>

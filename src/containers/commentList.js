@@ -12,10 +12,15 @@ class CommentList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      replying: false
+      replying: false,
+      // limitTo: 3
     }
     this.replyComment = this.replyComment.bind(this);
   }
+
+  // onLoadMore() {
+  //   this.setState({limitTo: this.state.limitTo + 3});
+  // }
 
   replyComment(event){
     this.setState({ replying: true})
@@ -35,7 +40,7 @@ class CommentList extends Component {
     }
 
     let topcomments = this.props.listcomments;
-    let items = topcomments.map((item, index) => {
+    let items = topcomments.sort().reverse().slice(0, 3).map((item, index) => {
       return (
         <p>{item}
           <span className='pull-right'>{new Date().toLocaleTimeString()}</span>
